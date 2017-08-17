@@ -6,26 +6,26 @@
     </div>
     <div class="row">
         <div class="col">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Tarefa</label>
+                            <input type="text" class="form-control" ngModel name="titulo" placeholder="Comprar frutas">
 
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tarefa</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" #inputTitulo placeholder="Comprar frutas">
-
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <input type="text" class="form-control" ngModel name="descricao" placeholder="Descrição">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary">Adicionar</button>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Descrição</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" #inputDescricao placeholder="Descrição">
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-primary align-bottom" (click)="addTask(inputTitulo.value, inputDescricao.value)" lick="">Adicionar</button>
-                </div>
-            </div>
-
+            </form>
         </div>
     </div>
 
@@ -35,8 +35,9 @@
     <div class="row">
         <div class="col">
             <table class="table table-inverse">
-                <thead>
+                <thead class="thead-inverse">
                     <tr>
+                        <th>#</th>
                         <th>Tarefa</th>
                         <th>Descrição</th>
                         <th>Excluir</th>
@@ -44,10 +45,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let task of tasks; let i = index">
+                        <td>{{ i }}</td>
                         <td>{{task[0]}}</td>
                         <td>{{task[1]}}</td>
                         <td>
-                            <button type="button" (click)="remover(i)" class="btn btn-primary">x</button>
+                            <button type="button" (click)="remover(i)" class="btn btn-link"><img src="assets/img/round-delete-button.svg" alt=""></button>
                         </td>
                     </tr>
                 </tbody>

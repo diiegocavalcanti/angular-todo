@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-tasks',
@@ -13,9 +14,15 @@ export class TasksComponent implements OnInit {
     ['Trabalhar', 'Terminar projeto em Angular 4'],
   ];
 
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(f: NgForm) {
+    this.addTask(f.value.titulo, f.value.descricao);
+    f.resetForm();
   }
 
   addTask(titulo: string, descricao: string) {
@@ -23,7 +30,7 @@ export class TasksComponent implements OnInit {
   }
 
   remover(index: number) {
-    this.tasks.splice(index);
+    this.tasks.splice(index, 1);
   }
 
 }
