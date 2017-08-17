@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Lista de Tarefas</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tarefa</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" #inputTitulo placeholder="Comprar frutas">
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Descrição</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" #inputDescricao placeholder="Descrição">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary align-bottom" (click)="addTask(inputTitulo.value, inputDescricao.value)" lick="">Adicionar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-inverse">
+                <thead>
+                    <tr>
+                        <th>Tarefa</th>
+                        <th>Descrição</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let task of tasks; let i = index">
+                        <td>{{task[0]}}</td>
+                        <td>{{task[1]}}</td>
+                        <td>
+                            <button type="button" (click)="remover(i)" class="btn btn-primary">x</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
